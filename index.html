@@ -3,857 +3,407 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Portal - Story & Event Management</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f7fa;
-            color: #333;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .header p {
-            opacity: 0.9;
-            margin-top: 0.5rem;
-        }
-
-        .nav-tabs {
-            background: white;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 0 2rem;
-        }
-
-        .nav-tabs button {
-            background: none;
-            border: none;
-            padding: 1rem 2rem;
-            cursor: pointer;
-            font-weight: 500;
-            color: #64748b;
-            border-bottom: 2px solid transparent;
-            transition: all 0.2s;
-        }
-
-        .nav-tabs button.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-        }
-
-        .nav-tabs button:hover {
-            color: #667eea;
-            background: #f8fafc;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            border-left: 4px solid #667eea;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #667eea;
-        }
-
-        .stat-label {
-            color: #64748b;
-            font-weight: 500;
-            margin-top: 0.5rem;
-        }
-
-        .content-section {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-
-        .section-header {
-            padding: 1.5rem 2rem;
-            background: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .filters {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .filter-select {
-            padding: 0.5rem 1rem;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            background: white;
-            font-size: 0.875rem;
-        }
-
-        .search-input {
-            padding: 0.5rem 1rem;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            width: 250px;
-            font-size: 0.875rem;
-        }
-
-        .submission-item {
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid #e2e8f0;
-            transition: background 0.2s;
-        }
-
-        .submission-item:hover {
-            background: #f8fafc;
-        }
-
-        .submission-item:last-child {
-            border-bottom: none;
-        }
-
-        .submission-header {
-            display: flex;
-            justify-content: between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .submission-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-        }
-
-        .submission-meta {
-            display: flex;
-            gap: 1rem;
-            color: #64748b;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-        }
-
-        .submission-content {
-            color: #475569;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .submission-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-approve {
-            background: #10b981;
-            color: white;
-        }
-
-        .btn-approve:hover {
-            background: #059669;
-        }
-
-        .btn-reject {
-            background: #ef4444;
-            color: white;
-        }
-
-        .btn-reject:hover {
-            background: #dc2626;
-        }
-
-        .btn-edit {
-            background: #f59e0b;
-            color: white;
-        }
-
-        .btn-edit:hover {
-            background: #d97706;
-        }
-
-        .btn-view {
-            background: #6b7280;
-            color: white;
-        }
-
-        .btn-view:hover {
-            background: #4b5563;
-        }
-
-        .status-badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .status-pending {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .status-approved {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .status-rejected {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #64748b;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #374151;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 0.875rem;
-        }
-
-        .form-textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: flex-end;
-        }
-
-        .btn-save {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-save:hover {
-            background: #5a6fd8;
-        }
-
-        .btn-cancel {
-            background: #6b7280;
-            color: white;
-        }
-
-        .btn-cancel:hover {
-            background: #4b5563;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .filters {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .search-input {
-                width: 100%;
-            }
-            
-            .submission-actions {
-                flex-wrap: wrap;
-            }
-        }
-    </style>
+    <title>Seneca Babcock Neighborhood Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Admin Portal</h1>
-        <p>Manage user-submitted stories and events</p>
-    </div>
-
-    <div class="nav-tabs">
-        <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
-        <button class="tab-btn" data-tab="stories">Stories</button>
-        <button class="tab-btn" data-tab="events">Events</button>
-        <button class="tab-btn" data-tab="settings">Settings</button>
-    </div>
-
-    <div class="container">
-        <!-- Dashboard Tab -->
-        <div class="tab-content active" id="dashboard">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">24</div>
-                    <div class="stat-label">Pending Stories</div>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>Seneca Babcock</h1>
+                    <span>Community Hub</span>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Pending Events</div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#history">History</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#local-places">Local Places</a></li>
+                </ul>
+                <div class="nav-search">
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="Search news, events, places..." aria-label="Search">
+                        <button type="button" id="search-btn" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div id="search-results" class="search-results hidden"></div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">156</div>
-                    <div class="stat-label">Total Approved</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">89%</div>
-                    <div class="stat-label">Approval Rate</div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
+        </nav>
+    </header>
 
-            <div class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">Recent Submissions</h2>
-                </div>
-                <div id="recent-submissions">
-                    <!-- Recent submissions will be populated here -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Stories Tab -->
-        <div class="tab-content" id="stories">
-            <div class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">Story Submissions</h2>
-                    <div class="filters">
-                        <select class="filter-select" id="story-filter">
-                            <option value="all">All Stories</option>
-                            <option value="pending">Pending</option>
-                            <option value="approved">Approved</option>
-                            <option value="rejected">Rejected</option>
-                        </select>
-                        <input type="text" class="search-input" placeholder="Search stories..." id="story-search">
-                    </div>
-                </div>
-                <div id="stories-list">
-                    <!-- Stories will be populated here -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Seneca Babcock</h1>
+                <p>Your comprehensive source for neighborhood information, history, and community updates</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('news')">Latest News</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('events')">Upcoming Events</button>
                 </div>
             </div>
-        </div>
-
-        <!-- Events Tab -->
-        <div class="tab-content" id="events">
-            <div class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">Event Submissions</h2>
-                    <div class="filters">
-                        <select class="filter-select" id="event-filter">
-                            <option value="all">All Events</option>
-                            <option value="pending">Pending</option>
-                            <option value="approved">Approved</option>
-                            <option value="rejected">Rejected</option>
-                        </select>
-                        <input type="text" class="search-input" placeholder="Search events..." id="event-search">
-                    </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
                 </div>
-                <div id="events-list">
-                    <!-- Events will be populated here -->
+                <div class="stat-item">
+                    <i class="fas fa-history"></i>
+                    <span>History</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Events</span>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Settings Tab -->
-        <div class="tab-content" id="settings">
-            <div class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">Admin Settings</h2>
-                </div>
-                <div style="padding: 2rem;">
-                    <div class="form-group">
-                        <label class="form-label">Auto-approve stories from verified users</label>
-                        <input type="checkbox" id="auto-approve" checked>
+        <!-- History Section -->
+        <section id="history" class="history-section">
+            <div class="container">
+                <h2>Neighborhood History</h2>
+                <div class="history-grid">
+                    <div class="history-card">
+                        <h3>Early Settlement</h3>
+                        <p>The Seneca Babcock neighborhood has deep historical roots in Buffalo's East Side, with early development dating back to the late 1800s.</p>
+                        <a href="https://buffalostreets.com/category/seneca-babcock/" target="_blank" class="learn-more">Learn More</a>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Email notifications for new submissions</label>
-                        <input type="checkbox" id="email-notifications" checked>
+                    <div class="history-card">
+                        <h3>Industrial Heritage</h3>
+                        <p>The area played a significant role in Buffalo's industrial development, with numerous factories and businesses contributing to the local economy.</p>
+                        <a href="https://buffaloah.com/h/eastside/babcock.html" target="_blank" class="learn-more">Learn More</a>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Maximum content length (characters)</label>
-                        <input type="number" class="form-input" value="5000" id="max-length">
+                    <div class="history-card">
+                        <h3>Community Development</h3>
+                        <p>Over the decades, the neighborhood has evolved into a vibrant community with strong local institutions and civic engagement.</p>
+                        <a href="http://blog.buffalostories.com/?s=seneca+babcock" target="_blank" class="learn-more">Learn More</a>
                     </div>
-                    <button class="btn btn-save">Save Settings</button>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Edit Modal -->
-    <div class="modal" id="editModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Edit Submission</h3>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
+        <!-- News Section -->
+        <section id="news" class="news-section">
+            <div class="container">
+                <h2>Latest News & Updates</h2>
+                <div class="news-grid">
+                    <!-- Featured WKBW Article -->
+                    <article class="news-card featured-article">
+                        <div class="news-source">
+                            <i class="fas fa-tv"></i>
+                            <span>WKBW News</span>
+                        </div>
+                        <div class="news-date">February 6, 2025</div>
+                        <h3>'We're in a better spot now': Seneca Babcock Center receives long-overdue reimbursement</h3>
+                        <p>The Seneca Babcock Community Center is finally receiving $101,000 from the City of Buffalo — money the center had been covering for utility bills over the past five years.</p>
+                        <div class="news-tags">
+                            <span class="tag">Community</span>
+                            <span class="tag">City Government</span>
+                        </div>
+                        <div class="news-actions">
+                            <a href="https://www.wkbw.com/news/local-news/buffalo/were-in-a-better-spot-now-seneca-babcock-center-receives-long-overdue-reimbursement-from-city-of-buffalo" target="_blank" class="btn btn-sm">Read Article</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Facebook Post 1 -->
+                    <article class="news-card facebook-post">
+                        <div class="news-source">
+                            <i class="fab fa-facebook"></i>
+                            <span>Seneca-Babcock Community Association</span>
+                        </div>
+                        <div class="news-date">2 days ago</div>
+                        <h3>Great news! City Reimbursement Received</h3>
+                        <p>🎉 The City of Buffalo has finally reimbursed us the $101,000 for utility bills we've been covering for the past five years. As President Brian Pilarski said, "We're in a better spot now." This means we can redirect these funds back to our community programs!</p>
+                        <div class="news-tags">
+                            <span class="tag">Community</span>
+                            <span class="tag">City Government</span>
+                        </div>
+                        <div class="facebook-stats">
+                            <span><i class="fas fa-heart"></i> 85</span>
+                            <span><i class="fas fa-comment"></i> 24</span>
+                            <span><i class="fas fa-share"></i> 18</span>
+                        </div>
+                    </article>
+
+                    <!-- Facebook Post 2 -->
+                    <article class="news-card facebook-post">
+                        <div class="news-source">
+                            <i class="fab fa-facebook"></i>
+                            <span>Seneca Street CDC</span>
+                        </div>
+                        <div class="news-date">3 days ago</div>
+                        <h3>Summer Reading Program in Full Swing</h3>
+                        <p>📚 Our summer reading program is going great! Kids are earning prizes for every book they read. The program runs through August 15th at our community center. Free books available for all participants! Stop by Monday-Friday 10 AM - 4 PM to sign up your child.</p>
+                        <div class="news-tags">
+                            <span class="tag">Education</span>
+                            <span class="tag">Youth Programs</span>
+                        </div>
+                        <div class="facebook-stats">
+                            <span><i class="fas fa-heart"></i> 42</span>
+                            <span><i class="fas fa-comment"></i> 12</span>
+                            <span><i class="fas fa-share"></i> 8</span>
+                        </div>
+                    </article>
+
+                    <!-- Facebook Post 3 -->
+                    <article class="news-card facebook-post">
+                        <div class="news-source">
+                            <i class="fab fa-facebook"></i>
+                            <span>Seneca-Babcock Community Association</span>
+                        </div>
+                        <div class="news-date">5 days ago</div>
+                        <h3>Community Garden Harvest Success</h3>
+                        <p>� Community Garden Update: Our volunteers have been doing incredible work! We've harvested over 200 pounds of fresh vegetables this month, which are being distributed to families in need through our food pantry. Next harvest day is Saturday at 9 AM!</p>
+                        <div class="news-tags">
+                            <span class="tag">Community</span>
+                            <span class="tag">Environment</span>
+                        </div>
+                        <div class="facebook-stats">
+                            <span><i class="fas fa-heart"></i> 67</span>
+                            <span><i class="fas fa-comment"></i> 18</span>
+                            <span><i class="fas fa-share"></i> 15</span>
+                        </div>
+                    </article>
+                </div>
+                <div class="news-footer">
+                    <a href="news.html" class="btn btn-primary">
+                        <i class="fas fa-newspaper"></i> View All News & Updates
+                    </a>
+                </div>
             </div>
-            <form id="editForm">
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-input" id="editEmail" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Story Type</label>
-                    <select class="form-input" id="editStoryType">
-                        <option value="Personal Journey">Personal Journey</option>
-                        <option value="Community Success">Community Success</option>
-                        <option value="Support & Resources">Support & Resources</option>
-                        <option value="Business Spotlight">Business Spotlight</option>
-                        <option value="Neighborhood History">Neighborhood History</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Title</label>
-                    <input type="text" class="form-input" id="editTitle" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Author</label>
-                    <input type="text" class="form-input" id="editAuthor" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Content</label>
-                    <textarea class="form-textarea" id="editContent" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Attached Photo</label>
-                    <div id="photoPreview" style="margin-top: 0.5rem;">
-                        <!-- Photo preview will be shown here -->
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="events-section">
+            <div class="container">
+                <h2>Upcoming Events</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="month">JUL</span>
+                            <span class="day">15</span>
+                        </div>
+                        <div class="event-content">
+                            <h3>Community Basketball Tournament</h3>
+                            <p class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                South Side Social and Athletic
+                            </p>
+                            <p class="event-time">
+                                <i class="fas fa-clock"></i>
+                                2:00 PM - 6:00 PM
+                            </p>
+                            <p>Annual neighborhood basketball tournament with prizes and community barbecue.</p>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="month">JUL</span>
+                            <span class="day">20</span>
+                        </div>
+                        <div class="event-content">
+                            <h3>Summer Concert Series</h3>
+                            <p class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Larkin Square
+                            </p>
+                            <p class="event-time">
+                                <i class="fas fa-clock"></i>
+                                7:00 PM - 9:00 PM
+                            </p>
+                            <p>Live music performances featuring local artists and food vendors.</p>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="month">JUL</span>
+                            <span class="day">25</span>
+                        </div>
+                        <div class="event-content">
+                            <h3>Community Clean-Up Day</h3>
+                            <p class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Arlene Mychajilw Community Center
+                            </p>
+                            <p class="event-time">
+                                <i class="fas fa-clock"></i>
+                                9:00 AM - 12:00 PM
+                            </p>
+                            <p>Join neighbors in keeping our community clean and beautiful.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Status</label>
-                    <select class="form-input" id="editStatus">
-                        <option value="pending">Pending</option>
-                        <option value="approved">Approved</option>
-                        <option value="rejected">Rejected</option>
-                    </select>
+                <div class="events-footer">
+                    <a href="events.html" class="btn btn-primary">
+                        <i class="fas fa-calendar-alt"></i> View All Events & Calendar
+                    </a>
                 </div>
-                <div class="modal-actions">
-                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Cancel</button>
-                    <button type="submit" class="btn btn-save">Save Changes</button>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="community-section">
+            <div class="container">
+                <h2>Share Your Story</h2>
+                <div class="community-content">
+                    <div class="community-intro">
+                        <p>Help us build a comprehensive archive of our neighborhood's stories, photos, and memories. Your contributions help preserve our community's heritage for future generations.</p>
+                    </div>
+                    <div class="community-form">
+                        <form id="story-form">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="story-type">Story Type</label>
+                                <select id="story-type" name="story-type" required>
+                                    <option value="">Select a type</option>
+                                    <option value="history">Historical Memory</option>
+                                    <option value="event">Community Event</option>
+                                    <option value="business">Local Business</option>
+                                    <option value="personal">Personal Story</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="story">Your Story</label>
+                                <textarea id="story" name="story" rows="6" placeholder="Share your story about the Seneca Babcock neighborhood..." required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="photo">Upload Photo (optional)</label>
+                                <input type="file" id="photo" name="photo" accept="image/*">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Share Story</button>
+                        </form>
+                    </div>
                 </div>
-            </form>
-        </div>
-    </div>
+            </div>
+        </section>
 
-    <script>
-        // Sample data
-        const stories = [
-            {
-                id: 1,
-                title: "My Journey to Recovery",
-                author: "Sarah Johnson",
-                email: "sarah.johnson@email.com",
-                content: "This is my story about overcoming addiction and finding hope again. It started five years ago when I hit rock bottom and realized I needed to make a change. Through the support of my family and the resources available in the Seneca Babcock neighborhood, I was able to find the help I needed...",
-                status: "pending",
-                type: "story",
-                storyType: "Personal Journey",
-                submittedAt: "2025-07-08T10:30:00Z",
-                hasPhoto: true,
-                photoUrl: "story1.jpg"
-            },
-            {
-                id: 2,
-                title: "Community Garden Success",
-                author: "Mike Chen",
-                email: "mike.chen@email.com",
-                content: "Our neighborhood came together to create something beautiful. The community garden has transformed our area and brought neighbors together in ways I never imagined. It started as a small idea but grew into something amazing...",
-                status: "approved",
-                type: "story",
-                storyType: "Community Success",
-                submittedAt: "2025-07-07T14:20:00Z",
-                hasPhoto: true,
-                photoUrl: "story2.jpg"
-            },
-            {
-                id: 3,
-                title: "Finding Support After Loss",
-                author: "Anonymous",
-                email: "anonymous@temp.com",
-                content: "Losing my spouse was the hardest thing I've ever experienced. But through support groups and community resources in our neighborhood, I found a way to heal and help others going through similar experiences...",
-                status: "pending",
-                type: "story",
-                storyType: "Support & Resources",
-                submittedAt: "2025-07-06T09:15:00Z",
-                hasPhoto: false,
-                photoUrl: null
-            },
-            {
-                id: 4,
-                title: "Local Business Spotlight",
-                author: "Maria Rodriguez",
-                email: "maria.r@email.com",
-                content: "Share your story about the Seneca Babcock neighborhood... I want to highlight how local businesses have supported our community through difficult times. From the corner store that extended credit to families in need...",
-                status: "approved",
-                type: "story",
-                storyType: "Business Spotlight",
-                submittedAt: "2025-07-05T16:30:00Z",
-                hasPhoto: true,
-                photoUrl: "story4.jpg"
-            }
-        ];
-
-        const events = [
-            {
-                id: 4,
-                title: "Mental Health Awareness Workshop",
-                author: "Dr. Lisa Martinez",
-                content: "Join us for a comprehensive workshop on mental health awareness. We'll cover coping strategies, resources...",
-                status: "approved",
-                type: "event",
-                submittedAt: "2025-07-08T16:45:00Z",
-                date: "2025-07-20",
-                location: "Community Center"
-            },
-            {
-                id: 5,
-                title: "Support Group Meeting",
-                author: "Tom Wilson",
-                content: "Weekly support group meeting for those dealing with addiction recovery. Safe space to share experiences...",
-                status: "pending",
-                type: "event",
-                submittedAt: "2025-07-07T11:30:00Z",
-                date: "2025-07-15",
-                location: "City Library"
-            }
-        ];
-
-        let currentEditId = null;
-        let allSubmissions = [...stories, ...events];
-
-        // Tab switching
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tabName = btn.getAttribute('data-tab');
-                switchTab(tabName);
-            });
-        });
-
-        function switchTab(tabName) {
-            // Update active tab button
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-
-            // Update active tab content
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-
-            // Load content based on tab
-            if (tabName === 'dashboard') {
-                loadDashboard();
-            } else if (tabName === 'stories') {
-                loadStories();
-            } else if (tabName === 'events') {
-                loadEvents();
-            }
-        }
-
-        function loadDashboard() {
-            const recentSubmissions = document.getElementById('recent-submissions');
-            const recent = allSubmissions
-                .sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt))
-                .slice(0, 5);
-            
-            recentSubmissions.innerHTML = recent.map(item => createSubmissionHTML(item)).join('');
-        }
-
-        function loadStories() {
-            const storiesList = document.getElementById('stories-list');
-            const filteredStories = stories.filter(story => {
-                const filter = document.getElementById('story-filter').value;
-                const search = document.getElementById('story-search').value.toLowerCase();
-                
-                const matchesFilter = filter === 'all' || story.status === filter;
-                const matchesSearch = story.title.toLowerCase().includes(search) || 
-                                    story.author.toLowerCase().includes(search) ||
-                                    story.content.toLowerCase().includes(search);
-                
-                return matchesFilter && matchesSearch;
-            });
-            
-            storiesList.innerHTML = filteredStories.map(story => createSubmissionHTML(story)).join('');
-        }
-
-        function loadEvents() {
-            const eventsList = document.getElementById('events-list');
-            const filteredEvents = events.filter(event => {
-                const filter = document.getElementById('event-filter').value;
-                const search = document.getElementById('event-search').value.toLowerCase();
-                
-                const matchesFilter = filter === 'all' || event.status === filter;
-                const matchesSearch = event.title.toLowerCase().includes(search) || 
-                                    event.author.toLowerCase().includes(search) ||
-                                    event.content.toLowerCase().includes(search);
-                
-                return matchesFilter && matchesSearch;
-            });
-            
-            eventsList.innerHTML = filteredEvents.map(event => createSubmissionHTML(event)).join('');
-        }
-
-        function createSubmissionHTML(item) {
-            const submittedDate = new Date(item.submittedAt).toLocaleDateString();
-            const statusClass = `status-${item.status}`;
-            
-            return `
-                <div class="submission-item">
-                    <div class="submission-header">
-                        <div style="flex: 1;">
-                            <div class="submission-title">${item.title || 'Untitled Story'}</div>
-                            <div class="submission-meta">
-                                <span>By: ${item.author}</span>
-                                <span>•</span>
-                                <span>Email: ${item.email || 'N/A'}</span>
-                                <span>•</span>
-                                <span>Submitted: ${submittedDate}</span>
-                                <span>•</span>
-                                <span class="status-badge ${statusClass}">${item.status}</span>
-                                ${item.storyType ? `<span>•</span><span>Type: ${item.storyType}</span>` : ''}
-                                ${item.type === 'event' ? `<span>•</span><span>Date: ${item.date}</span>` : ''}
-                                ${item.hasPhoto ? `<span>•</span><span style="color: #10b981;">📷 Photo attached</span>` : ''}
+        <!-- Local Places Section -->
+        <section id="local-places" class="local-places-section">
+            <div class="container">
+                <h2>Local Places & Services</h2>
+                <div class="places-grid">
+                    <div class="place-category">
+                        <h3>Community Centers</h3>
+                        <div class="place-list">
+                            <div class="place-item">
+                                <i class="fas fa-building"></i>
+                                <span>Seneca Babcock Community Center</span>
+                            </div>
+                            <div class="place-item">
+                                <i class="fas fa-building"></i>
+                                <span>Arlene Mychajilw Community Center</span>
                             </div>
                         </div>
                     </div>
-                    <div class="submission-content">
-                        ${item.content.substring(0, 200)}${item.content.length > 200 ? '...' : ''}
+                    <div class="place-category">
+                        <h3>Recreation & Sports</h3>
+                        <div class="place-list">
+                            <div class="place-item">
+                                <i class="fas fa-futbol"></i>
+                                <span>South Side Social and Athletic</span>
+                            </div>
+                            <div class="place-item">
+                                <i class="fas fa-dumbbell"></i>
+                                <span>Medaille Sports Complex at Buffalo Color Park</span>
+                            </div>
+                            <div class="place-item">
+                                <i class="fas fa-tree"></i>
+                                <span>Larkin Square</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="submission-actions">
-                        <button class="btn btn-view" onclick="viewSubmission(${item.id})">View Full</button>
-                        <button class="btn btn-edit" onclick="editSubmission(${item.id})">Edit</button>
-                        ${item.status === 'pending' ? `
-                            <button class="btn btn-approve" onclick="approveSubmission(${item.id})">Approve</button>
-                            <button class="btn btn-reject" onclick="rejectSubmission(${item.id})">Reject</button>
-                        ` : ''}
+                    <div class="place-category">
+                        <h3>Shopping & Services</h3>
+                        <div class="place-list">
+                            <div class="place-item">
+                                <i class="fas fa-shopping-basket"></i>
+                                <span>Clinton Bailey Farmers Market</span>
+                            </div>
+                            <div class="place-item">
+                                <i class="fas fa-warehouse"></i>
+                                <span>Camolots Warehouse Outlet</span>
+                            </div>
+                            <div class="place-item">
+                                <i class="fas fa-hammer"></i>
+                                <span>Len Co Lumber</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-category">
+                        <h3>Business & Industry</h3>
+                        <div class="place-list">
+                            <div class="place-item">
+                                <i class="fas fa-industry"></i>
+                                <span>Buffalo Core Supply</span>
+                            </div>
+                            <div class="place-item">
+                                <i class="fas fa-cog"></i>
+                                <span>Honeywell</span>
+                            </div>
+                            <div class="place-item">
+                                <i class="fas fa-wrench"></i>
+                                <span>Kamco Supply of New England</span>
+                            </div>
+                            <div class="place-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>Electrical Service</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            `;
-        }
+            </div>
+        </section>
+    </main>
 
-        // Action functions
-        function viewSubmission(id) {
-            const item = allSubmissions.find(s => s.id === id);
-            if (item) {
-                const photoInfo = item.hasPhoto ? `\nPhoto: ${item.photoUrl}` : '\nNo photo attached';
-                const storyTypeInfo = item.storyType ? `\nStory Type: ${item.storyType}` : '';
-                const emailInfo = item.email ? `\nEmail: ${item.email}` : '';
-                
-                alert(`Title: ${item.title || 'Untitled Story'}\nAuthor: ${item.author}${emailInfo}${storyTypeInfo}\nStatus: ${item.status}${photoInfo}\n\nContent:\n${item.content}`);
-            }
-        }
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Seneca Babcock Hub</h3>
+                    <p>Connecting our community through shared stories and information.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#history">History</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#community">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/senecababcock/" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seneca Babcock Community Hub. Built with community in mind.</p>
+            </div>
+        </div>
+    </footer>
 
-        function editSubmission(id) {
-            const item = allSubmissions.find(s => s.id === id);
-            if (item) {
-                currentEditId = id;
-                document.getElementById('editTitle').value = item.title || '';
-                document.getElementById('editAuthor').value = item.author || '';
-                document.getElementById('editEmail').value = item.email || '';
-                document.getElementById('editContent').value = item.content || '';
-                document.getElementById('editStatus').value = item.status || 'pending';
-                document.getElementById('editStoryType').value = item.storyType || 'Personal Journey';
-                
-                // Show photo preview if available
-                const photoPreview = document.getElementById('photoPreview');
-                if (item.hasPhoto && item.photoUrl) {
-                    photoPreview.innerHTML = `
-                        <div style="padding: 0.5rem; background: #f3f4f6; border-radius: 6px; font-size: 0.875rem;">
-                            📷 Photo attached: ${item.photoUrl}
-                            <br><em>Note: Photo management requires backend integration</em>
-                        </div>
-                    `;
-                } else {
-                    photoPreview.innerHTML = `
-                        <div style="padding: 0.5rem; background: #f9f9f9; border-radius: 6px; font-size: 0.875rem; color: #6b7280;">
-                            No photo attached
-                        </div>
-                    `;
-                }
-                
-                document.getElementById('editModal').style.display = 'block';
-            }
-        }
-
-        function approveSubmission(id) {
-            const item = allSubmissions.find(s => s.id === id);
-            if (item) {
-                item.status = 'approved';
-                refreshCurrentTab();
-                showNotification('Submission approved successfully!');
-            }
-        }
-
-        function rejectSubmission(id) {
-            const item = allSubmissions.find(s => s.id === id);
-            if (item) {
-                item.status = 'rejected';
-                refreshCurrentTab();
-                showNotification('Submission rejected.');
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('editModal').style.display = 'none';
-        }
-
-        function refreshCurrentTab() {
-            const activeTab = document.querySelector('.tab-btn.active').getAttribute('data-tab');
-            switchTab(activeTab);
-        }
-
-        function showNotification(message) {
-            // Simple notification - you could enhance this with a proper notification system
-            alert(message);
-        }
-
-        // Edit form submission
-        document.getElementById('editForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const item = allSubmissions.find(s => s.id === currentEditId);
-            if (item) {
-                item.title = document.getElementById('editTitle').value;
-                item.author = document.getElementById('editAuthor').value;
-                item.email = document.getElementById('editEmail').value;
-                item.content = document.getElementById('editContent').value;
-                item.status = document.getElementById('editStatus').value;
-                item.storyType = document.getElementById('editStoryType').value;
-                
-                closeModal();
-                refreshCurrentTab();
-                showNotification('Submission updated successfully!');
-            }
-        });
-
-        // Filter and search event listeners
-        document.getElementById('story-filter').addEventListener('change', loadStories);
-        document.getElementById('story-search').addEventListener('input', loadStories);
-        document.getElementById('event-filter').addEventListener('change', loadEvents);
-        document.getElementById('event-search').addEventListener('input', loadEvents);
-
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            const modal = document.getElementById('editModal');
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Initial load
-        loadDashboard();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

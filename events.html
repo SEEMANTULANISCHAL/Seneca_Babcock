@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Calendar - Seneca Babcock Community Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="events.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin=""/>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>Seneca Babcock</h1>
+                    <span>Community Hub</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#history">History</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="index.html#community">Community</a></li>
+                    <li><a href="index.html#local-places">Local Places</a></li>
+                </ul>
+                <div class="nav-search">
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="Search news, events, places..." aria-label="Search">
+                        <button type="button" id="search-btn" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div id="search-results" class="search-results hidden"></div>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Events Hero Section -->
+        <section class="events-hero">
+            <div class="container">
+                <h1>Community Events & Calendar</h1>
+                <p>Stay connected with everything happening in the Seneca Babcock neighborhood</p>
+                <div class="events-stats">
+                    <div class="stat">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label">Events This Month</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Weekly Activities</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Community Partners</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Filters -->
+        <section class="event-filters">
+            <div class="container">
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">All Events</button>
+                    <button class="filter-btn" data-filter="sports">Sports & Recreation</button>
+                    <button class="filter-btn" data-filter="community">Community</button>
+                    <button class="filter-btn" data-filter="cultural">Cultural</button>
+                    <button class="filter-btn" data-filter="health">Health & Wellness</button>
+                    <button class="filter-btn" data-filter="youth">Youth Programs</button>
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active" id="calendar-view-btn">
+                        <i class="fas fa-calendar"></i> Calendar View
+                    </button>
+                    <button class="view-btn" id="list-view-btn">
+                        <i class="fas fa-list"></i> List View
+                    </button>
+                    <button class="view-btn" id="map-view-btn">
+                        <i class="fas fa-map"></i> Map View
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendar Section -->
+        <section class="calendar-section" id="calendar-section">
+            <div class="container">
+                <div class="calendar-header">
+                    <button class="calendar-nav" id="prev-month">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h2 id="calendar-month-year">July 2025</h2>
+                    <button class="calendar-nav" id="next-month">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="calendar-grid" id="calendar-grid">
+                    <!-- Calendar will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Events List Section -->
+        <section class="events-list-section hidden" id="events-list-section">
+            <div class="container">
+                <!-- July 2025 Events -->
+                <div class="month-section">
+                    <h2>July 2025</h2>
+                    <div class="events-timeline">
+                        <div class="event-item" data-category="cultural">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">09</span>
+                                <span class="event-month">JUL</span>
+                                <span class="event-time">7:30 PM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>KeyBank Live at Larkin - Radiohead "The Bends" & Beyond</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Larkin Square
+                                </p>
+                                <p class="event-description">Live tribute performance by Zak Ward & the Million Dollar Question featuring Radiohead classics.</p>
+                                <div class="event-tags">
+                                    <span class="tag cultural">Cultural</span>
+                                    <span class="tag community">Community</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="health">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">12</span>
+                                <span class="event-month">JUL</span>
+                                <span class="event-time">9:30 AM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Fitness in the Parks - ZUMBA®</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Larkin Square
+                                </p>
+                                <p class="event-description">Free outdoor Zumba class for all fitness levels. Bring water and a mat!</p>
+                                <div class="event-tags">
+                                    <span class="tag health">Health</span>
+                                    <span class="tag community">Community</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="community">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">13</span>
+                                <span class="event-month">JUL</span>
+                                <span class="event-time">11:00 AM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Taste of Buffalo</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Niagara Square (Downtown Buffalo)
+                                </p>
+                                <p class="event-description">The largest two-day food festival in the United States! Free admission, food tickets available for purchase.</p>
+                                <div class="event-tags">
+                                    <span class="tag community">Community</span>
+                                    <span class="tag cultural">Food Festival</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="health">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">14</span>
+                                <span class="event-month">JUL</span>
+                                <span class="event-time">5:15 PM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Fitness in the Parks - ZUMBA®</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Larkin Square
+                                </p>
+                                <p class="event-description">Evening Zumba class - perfect after work fitness session!</p>
+                                <div class="event-tags">
+                                    <span class="tag health">Health</span>
+                                    <span class="tag community">Community</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="community">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">15</span>
+                                <span class="event-month">JUL</span>
+                                <span class="event-time">5:00 PM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Food Truck Tuesday with Live Music</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Larkin Square
+                                </p>
+                                <p class="event-description">Food trucks featuring diverse cuisine with live music by Trigger & the Sermon.</p>
+                                <div class="event-tags">
+                                    <span class="tag community">Community</span>
+                                    <span class="tag cultural">Music</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="cultural">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">16</span>
+                                <span class="event-month">JUL</span>
+                                <span class="event-time">7:00 PM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>716 Day Celebration - Salute to Rick James & B-Lo Funk</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Larkin Square
+                                </p>
+                                <p class="event-description">Celebrate Buffalo's 716 area code with funk music by Critt & Universal Phunk honoring Rick James.</p>
+                                <div class="event-tags">
+                                    <span class="tag cultural">Cultural</span>
+                                    <span class="tag community">716 Day</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="sports">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">19</span>
+                                <span class="event-month">JUL</span>
+                                <span class="event-time">2:00 PM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Community Basketball Tournament</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    South Side Social and Athletic
+                                </p>
+                                <p class="event-description">Annual neighborhood basketball tournament with prizes and community barbecue.</p>
+                                <div class="event-tags">
+                                    <span class="tag sports">Sports</span>
+                                    <span class="tag community">Community</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="community">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">25</span>
+                                <span class="event-month">JUL</span>
+                                <span class="event-time">11:00 AM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Galbini Italian Heritage Festival</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Hertel Avenue (North Buffalo)
+                                </p>
+                                <p class="event-description">3-day festival celebrating 50 years! Free admission with authentic Italian food, music, and culture.</p>
+                                <div class="event-tags">
+                                    <span class="tag cultural">Cultural</span>
+                                    <span class="tag community">Heritage</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="community">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">26</span>
+                                <span class="event-month">JUL</span>
+                                <span class="event-time">9:00 AM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Garden Walk Buffalo</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Various Buffalo Neighborhoods
+                                </p>
+                                <p class="event-description">America's largest garden tour! Free self-guided tours of hundreds of creative gardens across the city.</p>
+                                <div class="event-tags">
+                                    <span class="tag community">Community</span>
+                                    <span class="tag health">Environment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- August 2025 Events -->
+                <div class="month-section">
+                    <h2>August 2025</h2>
+                    <div class="events-timeline">
+                        <div class="event-item" data-category="cultural">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">03</span>
+                                <span class="event-month">AUG</span>
+                                <span class="event-time">11:00 AM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Butterfly Experience at the Gardens</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Buffalo & Erie County Botanical Gardens
+                                </p>
+                                <p class="event-description">Final weekend to experience live butterflies in the conservatory. Included with admission.</p>
+                                <div class="event-tags">
+                                    <span class="tag cultural">Nature</span>
+                                    <span class="tag youth">Family</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="community">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">06</span>
+                                <span class="event-month">AUG</span>
+                                <span class="event-time">7:00 PM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Beatles Night on the Hydraulic Hearth Roof</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Hydraulic Hearth, Larkin Square
+                                </p>
+                                <p class="event-description">Rooftop Beatles tribute concert! Note: General admission tickets are SOLD OUT.</p>
+                                <div class="event-tags">
+                                    <span class="tag cultural">Music</span>
+                                    <span class="tag community">Sold Out</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="community">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">06</span>
+                                <span class="event-month">AUG</span>
+                                <span class="event-time">4:00 PM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Erie County Fair 2025</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Fairgrounds in Hamburg
+                                </p>
+                                <p class="event-description">12-day run of NY State's largest fair! Rides, food, entertainment, and agricultural exhibits.</p>
+                                <div class="event-tags">
+                                    <span class="tag community">Fair</span>
+                                    <span class="tag youth">Family</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="community">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">08</span>
+                                <span class="event-month">AUG</span>
+                                <span class="event-time">8:00 AM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Clinton Bailey Farmers Market</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Clinton Bailey Farmers Market
+                                </p>
+                                <p class="event-description">Weekly farmers market with local produce, crafts, and food vendors. Every Friday through October.</p>
+                                <div class="event-tags">
+                                    <span class="tag community">Local Business</span>
+                                    <span class="tag health">Fresh Food</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="youth">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">10</span>
+                                <span class="event-month">AUG</span>
+                                <span class="event-time">10:00 AM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Back-to-School Supply Drive</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Seneca Babcock Community Center
+                                </p>
+                                <p class="event-description">Donate and receive school supplies for the upcoming academic year. Community partnerships welcomed.</p>
+                                <div class="event-tags">
+                                    <span class="tag youth">Youth</span>
+                                    <span class="tag community">Education</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="sports">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">15</span>
+                                <span class="event-month">AUG</span>
+                                <span class="event-time">6:00 PM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Summer Tennis Lessons</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    South Side Social and Athletic
+                                </p>
+                                <p class="event-description">Free tennis lessons for beginners and intermediate players. Rackets available to borrow.</p>
+                                <div class="event-tags">
+                                    <span class="tag sports">Sports</span>
+                                    <span class="tag community">Free</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="health">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">20</span>
+                                <span class="event-month">AUG</span>
+                                <span class="event-time">9:00 AM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Community Wellness Walk</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Arlene Mychajilw Community Center
+                                </p>
+                                <p class="event-description">Guided neighborhood wellness walk followed by healthy breakfast and health screenings.</p>
+                                <div class="event-tags">
+                                    <span class="tag health">Wellness</span>
+                                    <span class="tag community">Free</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-item" data-category="cultural">
+                            <div class="event-date-sidebar">
+                                <span class="event-day">30</span>
+                                <span class="event-month">AUG</span>
+                                <span class="event-time">11:00 AM</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>National Buffalo Wing Festival</h3>
+                                <p class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Downtown Buffalo (near Seneca Babcock)
+                                </p>
+                                <p class="event-description">22nd annual wing festival - one of the best festivals in the country! Celebrating Buffalo's most famous food.</p>
+                                <div class="event-tags">
+                                    <span class="tag cultural">Food Festival</span>
+                                    <span class="tag community">Buffalo Pride</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Recurring Events -->
+                <div class="month-section">
+                    <h2>Weekly Recurring Events</h2>
+                    <div class="recurring-events">
+                        <div class="recurring-event">
+                            <h3>Monday Night Basketball</h3>
+                            <p><i class="fas fa-clock"></i> Every Monday, 7:00 PM - 9:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> South Side Social and Athletic</p>
+                            <p>Open gym for adults 18+. Friendly pickup games welcome.</p>
+                        </div>
+                        <div class="recurring-event">
+                            <h3>Food Truck Tuesday</h3>
+                            <p><i class="fas fa-clock"></i> Every Tuesday, 5:00 PM - 8:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Larkin Square</p>
+                            <p>Rotating food trucks with live music. Check schedule for performers.</p>
+                        </div>
+                        <div class="recurring-event">
+                            <h3>Fitness in the Parks - Zumba</h3>
+                            <p><i class="fas fa-clock"></i> Wednesdays & Fridays, Various Times</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Larkin Square</p>
+                            <p>Free outdoor fitness classes. Bring water and workout gear!</p>
+                        </div>
+                        <div class="recurring-event">
+                            <h3>Friday Farmers Market</h3>
+                            <p><i class="fas fa-clock"></i> Every Friday, 8:00 AM - 2:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Clinton Bailey Farmers Market</p>
+                            <p>Fresh produce, baked goods, crafts from local vendors.</p>
+                        </div>
+                        <div class="recurring-event">
+                            <h3>Saturday Community Garden</h3>
+                            <p><i class="fas fa-clock"></i> Every Saturday, 9:00 AM - 12:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Seneca Babcock Community Center</p>
+                            <p>Volunteer garden maintenance and learning workshops.</p>
+                        </div>
+                        <div class="recurring-event">
+                            <h3>Sunday Yoga at the Gardens</h3>
+                            <p><i class="fas fa-clock"></i> Every Sunday, 10:00 AM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Buffalo & Erie County Botanical Gardens</p>
+                            <p>Free outdoor yoga sessions (weather permitting).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section hidden" id="map-section">
+            <div class="container">
+                <div class="map-header">
+                    <h2>Seneca Babcock Event Map</h2>
+                    <p>Click on pins to see events at each location</p>
+                </div>
+                <div class="map-container">
+                    <div id="events-map" style="height: 500px; width: 100%; border-radius: 8px;"></div>
+                </div>
+                <div class="map-legend">
+                    <h3>Event Categories</h3>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <span class="legend-color cultural"></span>
+                            <span>Cultural Events</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color community"></span>
+                            <span>Community Events</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color sports"></span>
+                            <span>Sports & Recreation</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color health"></span>
+                            <span>Health & Wellness</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color youth"></span>
+                            <span>Youth Programs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Submission Section -->
+        <section class="event-submission">
+            <div class="container">
+                <h2>Submit Your Event</h2>
+                <p>Have an event to share with the community? Let us know!</p>
+                <form id="event-submission-form" class="event-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-title">Event Title</label>
+                            <input type="text" id="event-title" name="event-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-category">Category</label>
+                            <select id="event-category" name="event-category" required>
+                                <option value="">Select Category</option>
+                                <option value="sports">Sports & Recreation</option>
+                                <option value="community">Community</option>
+                                <option value="cultural">Cultural</option>
+                                <option value="health">Health & Wellness</option>
+                                <option value="youth">Youth Programs</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-date">Date</label>
+                            <input type="date" id="event-date" name="event-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-time">Time</label>
+                            <input type="time" id="event-time" name="event-time" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-location">Location</label>
+                        <input type="text" id="event-location" name="event-location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description">Description</label>
+                        <textarea id="event-description" name="event-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-info">Contact Information</label>
+                        <input type="text" id="contact-info" name="contact-info" placeholder="Email or phone number">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Event</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Seneca Babcock Hub</h3>
+                    <p>Connecting our community through shared stories and information.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#history">History</a></li>
+                        <li><a href="index.html#news">News</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="index.html#community">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/senecababcock/" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seneca Babcock Community Hub. Built with community in mind.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
+    <script src="script.js"></script>
+    <script src="events.js"></script>
+</body>
+</html>

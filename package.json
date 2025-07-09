@@ -1,0 +1,27 @@
+{
+  "name": "seneca-babcock-community-hub",
+  "version": "1.0.0",
+  "description": "A static community website for the Seneca Babcock neighborhood in Buffalo, NY",
+  "main": "index.html",
+  "scripts": {
+    "serve": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "start": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "community",
+    "neighborhood",
+    "buffalo",
+    "seneca-babcock",
+    "local-news",
+    "events",
+    "static-site"
+  ],
+  "author": "Seneca Babcock Community",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/seneca-babcock-hub.git"
+  },
+  "homepage": "https://your-username.github.io/seneca-babcock-hub"
+}

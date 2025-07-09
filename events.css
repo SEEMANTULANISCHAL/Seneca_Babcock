@@ -1,0 +1,825 @@
+/* Events Page Specific Styles */
+
+/* Events Hero Section */
+.events-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.events-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.events-hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.events-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Event Filters */
+.event-filters {
+    background: white;
+    padding: 2rem 0;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+}
+
+.event-filters .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    background: white;
+    color: #666;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.view-toggle {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.view-btn {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #e0e0e0;
+    background: white;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.view-btn:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.view-btn:hover,
+.view-btn.active {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+/* Calendar Section */
+.calendar-section {
+    padding: 3rem 0;
+    background: #f8f9fa;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.calendar-nav {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.calendar-nav:hover {
+    background: #2980b9;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.calendar-day {
+    background: white;
+    padding: 1rem;
+    min-height: 120px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.calendar-day:hover {
+    background: #f0f8ff;
+}
+
+.calendar-day.other-month {
+    background: #f5f5f5;
+    color: #ccc;
+}
+
+.calendar-day.today {
+    background: #e3f2fd;
+    border: 2px solid #3498db;
+}
+
+.calendar-day-number {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.calendar-event {
+    background: #3498db;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.calendar-event:hover {
+    background: #2980b9;
+}
+
+.calendar-event.sports { background: #e74c3c; }
+.calendar-event.community { background: #27ae60; }
+.calendar-event.cultural { background: #9b59b6; }
+.calendar-event.health { background: #f39c12; }
+.calendar-event.youth { background: #16a085; }
+
+/* Events List Section */
+.events-list-section {
+    padding: 3rem 0;
+    background: white;
+}
+
+.events-list-section.hidden {
+    display: none;
+}
+
+.month-section {
+    margin-bottom: 3rem;
+}
+
+.month-section h2 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+}
+
+.events-timeline {
+    position: relative;
+}
+
+.events-timeline::before {
+    content: '';
+    position: absolute;
+    left: 60px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e0e0e0;
+}
+
+.event-item {
+    display: flex;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.event-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.event-item.hidden {
+    display: none;
+}
+
+.event-date-sidebar {
+    background: #3498db;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 80px;
+    height: fit-content;
+    margin-right: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.event-day {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.event-month {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.event-time {
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-details h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.event-location {
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.event-description {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.event-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.tag.sports { background: #e74c3c; }
+.tag.community { background: #27ae60; }
+.tag.cultural { background: #9b59b6; }
+.tag.health { background: #f39c12; }
+.tag.youth { background: #16a085; }
+.tag.educational { background: #34495e; }
+.tag.safety { background: #e67e22; }
+
+/* Recurring Events */
+.recurring-events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.recurring-event {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+}
+
+.recurring-event h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.recurring-event p {
+    color: #666;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Event Submission */
+.event-submission {
+    padding: 3rem 0;
+    background: #f8f9fa;
+}
+
+.event-submission h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.event-submission p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.event-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Active navigation link */
+.nav-menu a.active {
+    color: #3498db;
+    font-weight: 600;
+}
+
+/* Event Modal Styles */
+.event-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    z-index: 2001;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.modal-body {
+    padding: 1rem 2rem 2rem;
+}
+
+.event-info {
+    margin-bottom: 2rem;
+}
+
+.event-detail {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.event-detail i {
+    color: #3498db;
+    width: 20px;
+    text-align: center;
+}
+
+.event-detail span {
+    color: #666;
+}
+
+.event-description {
+    margin-bottom: 2rem;
+}
+
+.event-description h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.event-description p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.event-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.event-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.event-actions .btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.event-actions .btn-primary:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+.event-actions .btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.event-actions .btn-secondary:hover {
+    background: #7f8c8d;
+    transform: translateY(-1px);
+}
+
+.event-actions .btn-outline {
+    background: transparent;
+    color: #3498db;
+    border: 2px solid #3498db;
+}
+
+.event-actions .btn-outline:hover {
+    background: #3498db;
+    color: white;
+}
+
+/* Enhanced calendar event hover effect */
+.calendar-event {
+    transition: all 0.3s ease;
+}
+
+.calendar-event:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    position: relative;
+}
+
+/* Map Section Styles */
+.map-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+}
+
+.map-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.map-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.map-header p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.map-container {
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.map-legend {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.map-legend h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.legend-items {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.legend-color.cultural {
+    background: #e74c3c;
+}
+
+.legend-color.community {
+    background: #3498db;
+}
+
+.legend-color.sports {
+    background: #f39c12;
+}
+
+.legend-color.health {
+    background: #27ae60;
+}
+
+.legend-color.youth {
+    background: #9b59b6;
+}
+
+/* Custom map popup styles */
+.leaflet-popup-content {
+    margin: 0;
+    padding: 0;
+}
+
+.map-popup {
+    min-width: 280px;
+}
+
+.map-popup-header {
+    background: #3498db;
+    color: white;
+    padding: 1rem;
+    margin: -10px -10px 0 -10px;
+    border-radius: 4px 4px 0 0;
+}
+
+.map-popup-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.map-popup-body {
+    padding: 1rem 0.5rem 0.5rem;
+}
+
+.popup-event {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.popup-event:last-child {
+    border-bottom: none;
+}
+
+.popup-event:hover {
+    background: #f8f9fa;
+    margin: 0 -0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.popup-event-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.3rem;
+}
+
+.popup-event-time {
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.popup-event-category {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+}
+
+.popup-event-category.cultural {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+.popup-event-category.community {
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+}
+
+.popup-event-category.sports {
+    background: rgba(243, 156, 18, 0.1);
+    color: #f39c12;
+}
+
+.popup-event-category.health {
+    background: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
+}
+
+.popup-event-category.youth {
+    background: rgba(155, 89, 182, 0.1);
+    color: #9b59b6;
+}
+
+/* Mobile responsiveness for map */
+@media (max-width: 768px) {
+    .map-section {
+        padding: 2rem 0;
+    }
+    
+    .map-header h2 {
+        font-size: 2rem;
+    }
+    
+    .legend-items {
+        gap: 1rem;
+    }
+    
+    .legend-item {
+        font-size: 0.8rem;
+    }
+    
+    #events-map {
+        height: 400px !important;
+    }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}

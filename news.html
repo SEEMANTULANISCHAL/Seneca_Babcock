@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest News & Updates - Seneca Babcock Neighborhood</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="news.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation (shared with main site) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    Seneca Babcock
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="news.html" class="nav-link active">News</a>
+                <a href="index.html#history" class="nav-link">History</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-search">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search news, events, places..." aria-label="Search">
+                    <button type="button" id="search-btn" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="news-header">
+        <div class="container">
+            <h1><i class="fas fa-newspaper"></i> Latest News & Updates</h1>
+            <p>Stay informed about what's happening in our community</p>
+        </div>
+    </header>
+
+    <!-- News Content -->
+    <main class="news-main">
+        <div class="container">
+            <!-- Featured Article Section -->
+            <section class="featured-article">
+                <h2><i class="fas fa-star"></i> Featured Story</h2>
+                <article class="featured-news-item">
+                    <div class="news-image">
+                        <img src="https://ewscripps.brightspotcdn.com/dims4/default/05fec70/2147483647/strip/true/crop/1300x728+0+0/resize/2560x1434!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2F10%2F5a%2F4068270644a0a9744b0599b8a33e%2Fscreenshot-2025-02-06-at-5-41-05-pm.png" alt="Seneca Babcock Community Center">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-source"><i class="fas fa-tv"></i> WKBW News</span>
+                            <span class="news-date"><i class="fas fa-calendar"></i> February 6, 2025</span>
+                        </div>
+                        <h3>'We're in a better spot now': Seneca Babcock Center receives long-overdue reimbursement from City of Buffalo</h3>
+                        <p class="news-excerpt">
+                            The Seneca Babcock Community Center is finally receiving $101,000 from the City of Buffalo — money the center had been covering for utility bills over the past five years. "We're in a better spot now," said Community Association President Brian Pilarski.
+                        </p>
+                        <div class="news-actions">
+                            <a href="https://www.wkbw.com/news/local-news/buffalo/were-in-a-better-spot-now-seneca-babcock-center-receives-long-overdue-reimbursement-from-city-of-buffalo" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Read Full Article
+                            </a>
+                            <button onclick="shareNews('Seneca Babcock Center receives long-overdue reimbursement from City of Buffalo', 'https://www.wkbw.com/news/local-news/buffalo/were-in-a-better-spot-now-seneca-babcock-center-receives-long-overdue-reimbursement-from-city-of-buffalo')" class="btn btn-outline">
+                                <i class="fas fa-share"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Community Updates Section -->
+            <section class="community-updates">
+                <h2><i class="fab fa-facebook"></i> Community Updates</h2>
+                <div class="facebook-posts-container">
+                    <!-- Facebook posts will be loaded here -->
+                    <div class="loading-message">
+                        <i class="fas fa-spinner fa-spin"></i> Loading community updates...
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter Signup -->
+            <section class="newsletter-signup">
+                <div class="newsletter-container">
+                    <h2><i class="fas fa-envelope"></i> Stay Updated</h2>
+                    <p>Subscribe to our newsletter for the latest community news and updates</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Archive Section -->
+            <section class="news-archive">
+                <h2><i class="fas fa-archive"></i> News Archive</h2>
+                <div class="archive-grid">
+                    <article class="archive-item">
+                        <div class="archive-date">
+                            <span class="month">NOV</span>
+                            <span class="day">15</span>
+                        </div>
+                        <div class="archive-content">
+                            <h3>Community Garden Harvest Celebration</h3>
+                            <p>Residents gathered to celebrate a successful growing season and share the bounty.</p>
+                            <span class="archive-category">Community Events</span>
+                        </div>
+                    </article>
+
+                    <article class="archive-item">
+                        <div class="archive-date">
+                            <span class="month">OCT</span>
+                            <span class="day">28</span>
+                        </div>
+                        <div class="archive-content">
+                            <h3>New Safety Initiative Launched</h3>
+                            <p>Neighborhood watch program expanded with additional patrol routes and community involvement.</p>
+                            <span class="archive-category">Safety & Security</span>
+                        </div>
+                    </article>
+
+                    <article class="archive-item">
+                        <div class="archive-date">
+                            <span class="month">SEP</span>
+                            <span class="day">12</span>
+                        </div>
+                        <div class="archive-content">
+                            <h3>Back-to-School Supply Drive Success</h3>
+                            <p>Community came together to provide school supplies for over 200 local students.</p>
+                            <span class="archive-category">Education</span>
+                        </div>
+                    </article>
+
+                    <article class="archive-item">
+                        <div class="archive-date">
+                            <span class="month">AUG</span>
+                            <span class="day">05</span>
+                        </div>
+                        <div class="archive-content">
+                            <h3>Summer Youth Program Graduation</h3>
+                            <p>25 young people completed the summer skills and leadership development program.</p>
+                            <span class="archive-category">Youth Programs</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Seneca Babcock Neighborhood</h3>
+                    <p>Building a stronger, more connected community together.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/SenecaStreetCDC/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> info@senecababcock.org</p>
+                    <p><i class="fas fa-phone"></i> (716) 555-0123</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Buffalo, NY 14210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seneca Babcock Neighborhood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="news.js"></script>
+</body>
+</html>
