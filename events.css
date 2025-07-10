@@ -2,33 +2,87 @@
 
 /* Events Hero Section */
 .events-hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    min-height: 70vh;
     color: white;
-    padding: 120px 0 80px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.events-hero .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.events-hero .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.events-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.8) 0%, rgba(52, 73, 94, 0.7) 50%, rgba(41, 128, 185, 0.6) 100%);
+    z-index: 2;
+}
+
+.events-hero .container {
+    position: relative;
+    z-index: 3;
+}
+
+.events-hero .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .events-hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: -1px;
 }
 
 .events-hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .events-stats {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
 .stat {
     text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 140px;
+    transition: transform 0.3s ease;
+}
+
+.stat:hover {
+    transform: translateY(-5px);
 }
 
 .stat-number {
@@ -36,11 +90,14 @@
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
+    color: #3498db;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .stat-label {
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 0.9;
+    font-weight: 500;
 }
 
 /* Event Filters */
@@ -309,6 +366,18 @@
     line-height: 1.6;
 }
 
+.event-organizer {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.event-organizer i {
+    margin-right: 0.5rem;
+    color: #999;
+}
+
 .event-tags {
     display: flex;
     gap: 0.5rem;
@@ -329,6 +398,7 @@
 .tag.youth { background: #16a085; }
 .tag.educational { background: #34495e; }
 .tag.safety { background: #e67e22; }
+.tag.support { background: #8e44ad; }
 
 /* Recurring Events */
 .recurring-events {

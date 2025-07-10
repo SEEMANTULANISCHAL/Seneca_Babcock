@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Resources - Seneca Babcock Neighborhood</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resources.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="assets/logo.jpg" alt="Seneca Babcock Community Logo" class="logo-image">
+                        <div class="logo-text">
+                            <h1>Seneca Babcock</h1>
+                            <span>Community Hub</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="nav-main">
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="history.html" class="nav-link">History</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="events.html" class="nav-link">Events</a></li>
+                        <li><a href="resources.html" class="nav-link active">Resources</a></li>
+                        <li><a href="studies.html" class="nav-link">Studies</a></li>
+                        <li><a href="index.html#community" class="nav-link">Community</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="nav-search">
+                        <div class="search-container">
+                            <input type="text" id="search-input" placeholder="Search news, events, places..." aria-label="Search">
+                            <button type="button" id="search-btn" aria-label="Search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div id="search-results" class="search-results hidden"></div>
+                    </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <button class="language-btn" id="language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span>English</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown" id="language-dropdown">
+                            <div class="language-option selected" data-lang="en">
+                                <span class="flag">🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option" data-lang="es">
+                                <span class="flag">🇪🇸</span>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <span class="flag">🇫🇷</span>
+                                <span>Français</span>
+                            </div>
+                            <div class="language-option" data-lang="ar">
+                                <span class="flag">🇸🇦</span>
+                                <span>العربية</span>
+                            </div>
+                            <div class="language-option" data-lang="sw">
+                                <span class="flag">🇹🇿</span>
+                                <span>Kiswahili</span>
+                            </div>
+                            <div class="language-option" data-lang="so">
+                                <span class="flag">🇸🇴</span>
+                                <span>Soomaaliga</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu -->
+                <div class="mobile-menu-container">
+                    <!-- Mobile Language Selector -->
+                    <div class="language-selector mobile">
+                        <button class="language-btn" id="mobile-language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span>English</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown" id="mobile-language-dropdown">
+                            <div class="language-option" data-lang="en">
+                                <span class="flag">🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option" data-lang="es">
+                                <span class="flag">🇪🇸</span>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <span class="flag">🇫🇷</span>
+                                <span>Français</span>
+                            </div>
+                            <div class="language-option" data-lang="ar">
+                                <span class="flag">🇸🇦</span>
+                                <span>العربية</span>
+                            </div>
+                            <div class="language-option" data-lang="sw">
+                                <span class="flag">🇹🇿</span>
+                                <span>Kiswahili</span>
+                            </div>
+                            <div class="language-option" data-lang="so">
+                                <span class="flag">🇸🇴</span>
+                                <span>Soomaaliga</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+                
+                <!-- Mobile Navigation Menu -->
+                <div class="mobile-nav-menu" id="mobile-nav-menu">
+                    <ul>
+                        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                        <li><a href="history.html" class="mobile-nav-link">History</a></li>
+                        <li><a href="news.html" class="mobile-nav-link">News</a></li>
+                        <li><a href="events.html" class="mobile-nav-link">Events</a></li>
+                        <li><a href="resources.html" class="mobile-nav-link active">Resources</a></li>
+                        <li><a href="studies.html" class="mobile-nav-link">Studies</a></li>
+                        <li><a href="index.html#community" class="mobile-nav-link">Community</a></li>
+                        <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Header -->
+    <header class="resources-header">
+        <div class="container">
+            <h1><i class="fas fa-hands-helping"></i> Community Resources</h1>
+            <p>Essential services and support programs for Seneca Babcock residents</p>
+        </div>
+    </header>
+
+    <!-- Resources Content -->
+    <main class="resources-main">
+        <div class="container">
+            <!-- Quick Access Section -->
+            <section class="quick-access">
+                <h2><i class="fas fa-tachometer-alt"></i> Quick Access</h2>
+                <div class="quick-access-grid">
+                    <div class="quick-access-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Emergency: 911</span>
+                    </div>
+                    <div class="quick-access-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Police Non-Emergency: (716) 851-4444</span>
+                    </div>
+                    <div class="quick-access-item">
+                        <i class="fas fa-fire"></i>
+                        <span>Fire Department: (716) 851-5000</span>
+                    </div>
+                    <div class="quick-access-item">
+                        <i class="fas fa-hospital"></i>
+                        <span>Buffalo General: (716) 859-5600</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resource Categories -->
+            <section class="resource-categories">
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">All Resources</button>
+                    <button class="tab-btn" data-category="food">Food & Nutrition</button>
+                    <button class="tab-btn" data-category="family">Family Services</button>
+                    <button class="tab-btn" data-category="seniors">Senior Services</button>
+                    <button class="tab-btn" data-category="health">Health & Wellness</button>
+                    <button class="tab-btn" data-category="housing">Housing & Utilities</button>
+                </div>
+
+                <div class="resources-list">
+                    <!-- Food & Nutrition Resources -->
+                    <div class="resource-detailed-card" data-category="food">
+                        <div class="resource-header">
+                            <div class="resource-icon-large">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="resource-title-section">
+                                <h3>Food Pantry</h3>
+                                <p class="resource-provider">Seneca-Babcock Community Association</p>
+                                <div class="resource-status available">Available Now</div>
+                            </div>
+                        </div>
+                        <div class="resource-details">
+                            <p class="resource-description">
+                                Offers fresh, perishable food items such as produce and low-fat dairy products directly to those in need. 
+                                Provides food to meet basic nutritional needs for individuals and families of all ages.
+                            </p>
+                            <div class="resource-info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Location:</strong><br>
+                                        1168 Seneca Street<br>
+                                        Buffalo, NY 14210
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Phone:</strong><br>
+                                        <a href="tel:716-822-5094">(716) 822-5094</a>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <strong>Hours:</strong><br>
+                                        Monday - Friday: 8:00 AM - 9:00 PM<br>
+                                        Saturday - Sunday: Closed
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-globe"></i>
+                                    <div>
+                                        <strong>Website:</strong><br>
+                                        <a href="https://senecababcock.com/adult-and-family-services" target="_blank">senecababcock.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resource-extra-info">
+                                <div class="eligibility">
+                                    <h4><i class="fas fa-check-circle"></i> Eligibility</h4>
+                                    <ul>
+                                        <li>Open to all ages</li>
+                                        <li>Individuals and families welcome</li>
+                                        <li>Buffalo residents</li>
+                                    </ul>
+                                </div>
+                                <div class="how-to-access">
+                                    <h4><i class="fas fa-clipboard-list"></i> How to Access</h4>
+                                    <p>Call (716) 822-5094 for more information. No appointment necessary during operating hours.</p>
+                                </div>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="tag">Free</span>
+                                <span class="tag">All Ages</span>
+                                <span class="tag">Families</span>
+                                <span class="tag">Walk-in</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Senior Services -->
+                    <div class="resource-detailed-card" data-category="seniors">
+                        <div class="resource-header">
+                            <div class="resource-icon-large">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="resource-title-section">
+                                <h3>Senior Services</h3>
+                                <p class="resource-provider">Seneca-Babcock Community Association</p>
+                                <div class="resource-status available">Available Now</div>
+                            </div>
+                        </div>
+                        <div class="resource-details">
+                            <p class="resource-description">
+                                Comprehensive supportive services for seniors including meals, case management, transportation, and recreational activities. 
+                                Designed to help seniors maintain independence and stay connected to the community.
+                            </p>
+                            <div class="resource-info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Location:</strong><br>
+                                        Schiller Park Senior Center<br>
+                                        2057 Genesee Street<br>
+                                        Buffalo, NY 14211
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Phone:</strong><br>
+                                        <a href="tel:716-895-2727">(716) 895-2727</a>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <strong>Hours:</strong><br>
+                                        Monday - Friday: 9:00 AM - 4:30 PM<br>
+                                        Saturday - Sunday: Closed
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-globe"></i>
+                                    <div>
+                                        <strong>Website:</strong><br>
+                                        <a href="https://senecababcock.com/senior-services" target="_blank">senecababcock.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resource-extra-info">
+                                <div class="eligibility">
+                                    <h4><i class="fas fa-check-circle"></i> Services Provided</h4>
+                                    <ul>
+                                        <li>Nutritious meals</li>
+                                        <li>Transportation assistance</li>
+                                        <li>Case management</li>
+                                        <li>Recreation and social activities</li>
+                                    </ul>
+                                </div>
+                                <div class="how-to-access">
+                                    <h4><i class="fas fa-clipboard-list"></i> How to Access</h4>
+                                    <p>Call (716) 895-2727 for more information. Services available to Erie County seniors.</p>
+                                </div>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="tag">Free</span>
+                                <span class="tag">Seniors</span>
+                                <span class="tag">Transportation</span>
+                                <span class="tag">Meals</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Baby & Children's Ministry -->
+                    <div class="resource-detailed-card" data-category="family">
+                        <div class="resource-header">
+                            <div class="resource-icon-large">
+                                <i class="fas fa-baby"></i>
+                            </div>
+                            <div class="resource-title-section">
+                                <h3>Baby & Children's Ministry</h3>
+                                <p class="resource-provider">Harvest House of South Buffalo</p>
+                                <div class="resource-status appointment">By Appointment</div>
+                            </div>
+                        </div>
+                        <div class="resource-details">
+                            <p class="resource-description">
+                                Mothers, fathers, grandparents, and other caregivers can "shop" free of charge for items their children need. 
+                                Each child receives a week's worth of clothing at no cost to their family/caregiver.
+                            </p>
+                            <div class="resource-info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Location:</strong><br>
+                                        Harvest House<br>
+                                        175 Jefferson Avenue<br>
+                                        Buffalo, NY 14210
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Phone:</strong><br>
+                                        <a href="tel:716-824-7818">(716) 824-7818 ext. 214</a>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <strong>Hours:</strong><br>
+                                        Monday - Friday: 9:00 AM - 4:00 PM<br>
+                                        (By Appointment Only)<br>
+                                        Saturday - Sunday: Closed
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <strong>Email:</strong><br>
+                                        <a href="mailto:babyministry@harvesthousebuffalo.org">babyministry@harvesthousebuffalo.org</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resource-extra-info">
+                                <div class="eligibility">
+                                    <h4><i class="fas fa-check-circle"></i> Items Available</h4>
+                                    <ul>
+                                        <li>Children's clothing (all sizes)</li>
+                                        <li>Safe cribs and car seats</li>
+                                        <li>Strollers and pack 'n plays</li>
+                                        <li>Toys, books, and pajamas</li>
+                                        <li>Socks and underwear</li>
+                                    </ul>
+                                </div>
+                                <div class="how-to-access">
+                                    <h4><i class="fas fa-clipboard-list"></i> Requirements</h4>
+                                    <p>Referral form required from agencies like Catholic Charities, WIC, or Buffalo Prenatal. 
+                                    Must bring ID for parent/caregiver and children. Call or email to schedule appointment.</p>
+                                </div>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="tag">Free</span>
+                                <span class="tag">Families</span>
+                                <span class="tag">Children</span>
+                                <span class="tag">Appointment Required</span>
+                                <span class="tag">Referral Needed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Evergreen Health - Care Coordination -->
+                    <div class="resource-detailed-card" data-category="health">
+                        <div class="resource-header">
+                            <div class="resource-icon-large">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="resource-title-section">
+                                <h3>Care Coordination</h3>
+                                <p class="resource-provider">Evergreen Health</p>
+                                <div class="resource-status available">Available Now</div>
+                            </div>
+                        </div>
+                        <div class="resource-details">
+                            <p class="resource-description">
+                                Provides care coordination services to help patients navigate healthcare systems and access appropriate medical services.
+                            </p>
+                            <div class="resource-info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Location:</strong><br>
+                                        Buffalo, NY 14210
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Contact:</strong><br>
+                                        Call for information
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resource-extra-info">
+                                <div class="eligibility">
+                                    <h4><i class="fas fa-check-circle"></i> Services Provided</h4>
+                                    <ul>
+                                        <li>Healthcare coordination</li>
+                                        <li>Patient navigation</li>
+                                        <li>Medical service referrals</li>
+                                        <li>Health system navigation</li>
+                                    </ul>
+                                </div>
+                                <div class="how-to-access">
+                                    <h4><i class="fas fa-clipboard-list"></i> How to Access</h4>
+                                    <p>Contact Evergreen Health for care coordination services and medical navigation assistance.</p>
+                                </div>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="tag">Health</span>
+                                <span class="tag">Coordination</span>
+                                <span class="tag">Navigation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Evergreen Health - Transportation -->
+                    <div class="resource-detailed-card" data-category="health">
+                        <div class="resource-header">
+                            <div class="resource-icon-large">
+                                <i class="fas fa-shuttle-van"></i>
+                            </div>
+                            <div class="resource-title-section">
+                                <h3>Transportation Assistance</h3>
+                                <p class="resource-provider">Evergreen Health</p>
+                                <div class="resource-status available">Available Now</div>
+                            </div>
+                        </div>
+                        <div class="resource-details">
+                            <p class="resource-description">
+                                Provides transportation assistance to help patients access medical appointments and healthcare services.
+                            </p>
+                            <div class="resource-info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Service Area:</strong><br>
+                                        Buffalo, NY 14210
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Contact:</strong><br>
+                                        Call for transportation scheduling
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resource-extra-info">
+                                <div class="eligibility">
+                                    <h4><i class="fas fa-check-circle"></i> Services Provided</h4>
+                                    <ul>
+                                        <li>Medical appointment transportation</li>
+                                        <li>Healthcare facility access</li>
+                                        <li>Accessible vehicle options</li>
+                                        <li>Scheduled transportation services</li>
+                                    </ul>
+                                </div>
+                                <div class="how-to-access">
+                                    <h4><i class="fas fa-clipboard-list"></i> How to Access</h4>
+                                    <p>Contact Evergreen Health to schedule transportation for medical appointments and healthcare services.</p>
+                                </div>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="tag">Transportation</span>
+                                <span class="tag">Medical</span>
+                                <span class="tag">Accessible</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NYS Child Care Subsidy Program -->
+                    <div class="resource-detailed-card" data-category="family">
+                        <div class="resource-header">
+                            <div class="resource-icon-large">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <div class="resource-title-section">
+                                <h3>Child Care Subsidy Program</h3>
+                                <p class="resource-provider">New York State Office of Children and Family Services</p>
+                                <div class="resource-status available">Available Now</div>
+                            </div>
+                        </div>
+                        <div class="resource-details">
+                            <p class="resource-description">
+                                Financial assistance program to help eligible families pay for child care services while working, attending school, or in training programs.
+                            </p>
+                            <div class="resource-info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Service Area:</strong><br>
+                                        Buffalo, NY 14210
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Contact:</strong><br>
+                                        NYS OCFS Buffalo Office
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-globe"></i>
+                                    <div>
+                                        <strong>Website:</strong><br>
+                                        <a href="https://ocfs.ny.gov" target="_blank">ocfs.ny.gov</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resource-extra-info">
+                                <div class="eligibility">
+                                    <h4><i class="fas fa-check-circle"></i> Eligibility Requirements</h4>
+                                    <ul>
+                                        <li>Income must meet state guidelines</li>
+                                        <li>Working, in school, or training</li>
+                                        <li>Child must be under 13 (or under 19 with special needs)</li>
+                                        <li>New York State resident</li>
+                                    </ul>
+                                </div>
+                                <div class="how-to-access">
+                                    <h4><i class="fas fa-clipboard-list"></i> How to Apply</h4>
+                                    <p>Contact your local Department of Social Services or apply online through the NYS OCFS website. Documentation of income, employment, and child's information required.</p>
+                                </div>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="tag">Financial Assistance</span>
+                                <span class="tag">Child Care</span>
+                                <span class="tag">Working Families</span>
+                                <span class="tag">State Program</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Erie County Mental Health - HCBS -->
+                    <div class="resource-detailed-card" data-category="health">
+                        <div class="resource-header">
+                            <div class="resource-icon-large">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="resource-title-section">
+                                <h3>Home and Community Based Services (HCBS)</h3>
+                                <p class="resource-provider">Erie County Department of Mental Health</p>
+                                <div class="resource-status available">Available Now</div>
+                            </div>
+                        </div>
+                        <div class="resource-details">
+                            <p class="resource-description">
+                                Community-based mental health services designed to help individuals with mental health conditions live independently in their communities rather than in institutional settings.
+                            </p>
+                            <div class="resource-info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Service Area:</strong><br>
+                                        Erie County, Buffalo, NY
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Contact:</strong><br>
+                                        Erie County Mental Health
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <strong>Availability:</strong><br>
+                                        Monday - Friday business hours
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resource-extra-info">
+                                <div class="eligibility">
+                                    <h4><i class="fas fa-check-circle"></i> Services Provided</h4>
+                                    <ul>
+                                        <li>Community mental health support</li>
+                                        <li>Independent living assistance</li>
+                                        <li>Case management services</li>
+                                        <li>Skill development programs</li>
+                                        <li>Crisis intervention services</li>
+                                    </ul>
+                                </div>
+                                <div class="how-to-access">
+                                    <h4><i class="fas fa-clipboard-list"></i> How to Access</h4>
+                                    <p>Contact Erie County Department of Mental Health for assessment and referral to appropriate community-based mental health services.</p>
+                                </div>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="tag">Mental Health</span>
+                                <span class="tag">Community Support</span>
+                                <span class="tag">Independent Living</span>
+                                <span class="tag">County Service</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goodwill Career Services -->
+                    <div class="resource-detailed-card" data-category="employment">
+                        <div class="resource-header">
+                            <div class="resource-icon-large">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="resource-title-section">
+                                <h3>GoodSkills Career Builder</h3>
+                                <p class="resource-provider">Goodwill of Western New York</p>
+                                <div class="resource-status available">Available Now</div>
+                            </div>
+                        </div>
+                        <div class="resource-details">
+                            <p class="resource-description">
+                                Comprehensive career development program offering job training, employment services, and skills development to help individuals achieve sustainable employment.
+                            </p>
+                            <div class="resource-info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Location:</strong><br>
+                                        Buffalo, NY
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Contact:</strong><br>
+                                        Goodwill Western NY
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-globe"></i>
+                                    <div>
+                                        <strong>Website:</strong><br>
+                                        <a href="https://goodwillwny.org" target="_blank">goodwillwny.org</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resource-extra-info">
+                                <div class="eligibility">
+                                    <h4><i class="fas fa-check-circle"></i> Services Provided</h4>
+                                    <ul>
+                                        <li>Job training and skills development</li>
+                                        <li>Resume building and interview preparation</li>
+                                        <li>Career counseling and guidance</li>
+                                        <li>Job placement assistance</li>
+                                        <li>Digital literacy training</li>
+                                        <li>Professional development workshops</li>
+                                    </ul>
+                                </div>
+                                <div class="how-to-access">
+                                    <h4><i class="fas fa-clipboard-list"></i> How to Access</h4>
+                                    <p>Contact Goodwill of Western New York to enroll in the GoodSkills Career Builder program. Open to individuals seeking employment and career advancement.</p>
+                                </div>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="tag">Job Training</span>
+                                <span class="tag">Career Development</span>
+                                <span class="tag">Employment</span>
+                                <span class="tag">Skills Building</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disability Benefits Information -->
+                    <div class="resource-detailed-card" data-category="benefits">
+                        <div class="resource-header">
+                            <div class="resource-icon-large">
+                                <i class="fas fa-wheelchair"></i>
+                            </div>
+                            <div class="resource-title-section">
+                                <h3>Disability Benefits Information</h3>
+                                <p class="resource-provider">Buffalo Area Resources</p>
+                                <div class="resource-status available">Available Now</div>
+                            </div>
+                        </div>
+                        <div class="resource-details">
+                            <p class="resource-description">
+                                Information and assistance with disability benefits applications, including Social Security Disability Insurance (SSDI) and Supplemental Security Income (SSI).
+                            </p>
+                            <div class="resource-info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Service Area:</strong><br>
+                                        Buffalo, NY 14210
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>SSA National:</strong><br>
+                                        <a href="tel:1-800-772-1213">1-800-772-1213</a>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-globe"></i>
+                                    <div>
+                                        <strong>Website:</strong><br>
+                                        <a href="https://www.ssa.gov" target="_blank">ssa.gov</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resource-extra-info">
+                                <div class="eligibility">
+                                    <h4><i class="fas fa-check-circle"></i> Benefits Available</h4>
+                                    <ul>
+                                        <li>Social Security Disability Insurance (SSDI)</li>
+                                        <li>Supplemental Security Income (SSI)</li>
+                                        <li>Medicare benefits</li>
+                                        <li>Medicaid assistance</li>
+                                        <li>Vocational rehabilitation</li>
+                                    </ul>
+                                </div>
+                                <div class="how-to-access">
+                                    <h4><i class="fas fa-clipboard-list"></i> How to Apply</h4>
+                                    <p>Apply online at ssa.gov, call the national number, or visit the local Social Security office. Gather medical records, work history, and personal documentation before applying.</p>
+                                </div>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="tag">Disability Benefits</span>
+                                <span class="tag">SSDI</span>
+                                <span class="tag">SSI</span>
+                                <span class="tag">Federal Program</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Resources (Placeholder for more to be added) -->
+                </div>
+            </section>
+
+            <!-- Emergency Resources -->
+            <section class="emergency-resources">
+                <h2><i class="fas fa-exclamation-triangle"></i> Emergency Resources</h2>
+                <div class="emergency-grid">
+                    <div class="emergency-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Emergency Services</h3>
+                        <p>For life-threatening emergencies</p>
+                        <a href="tel:911" class="emergency-number">911</a>
+                    </div>
+                    <div class="emergency-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>Crisis Text Line</h3>
+                        <p>24/7 mental health support</p>
+                        <a href="sms:741741" class="emergency-number">Text HOME to 741741</a>
+                    </div>
+                    <div class="emergency-card">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Suicide Prevention</h3>
+                        <p>National suicide prevention lifeline</p>
+                        <a href="tel:988" class="emergency-number">988</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit New Resource -->
+            <section class="submit-resource">
+                <div class="submit-resource-container">
+                    <h2><i class="fas fa-plus-circle"></i> Know of a Resource?</h2>
+                    <p>Help us keep our community resource directory up to date by suggesting new resources or reporting changes.</p>
+                    <form class="resource-form" id="resource-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resource-name">Resource Name</label>
+                                <input type="text" id="resource-name" name="resource-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="resource-category">Category</label>
+                                <select id="resource-category" name="resource-category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="food">Food & Nutrition</option>
+                                    <option value="family">Family Services</option>
+                                    <option value="seniors">Senior Services</option>
+                                    <option value="health">Health & Wellness</option>
+                                    <option value="housing">Housing & Utilities</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="resource-description">Description</label>
+                            <textarea id="resource-description" name="resource-description" rows="3" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resource-contact">Contact Information</label>
+                                <input type="text" id="resource-contact" name="resource-contact" placeholder="Phone, email, or website">
+                            </div>
+                            <div class="form-group">
+                                <label for="submitter-email">Your Email</label>
+                                <input type="email" id="submitter-email" name="submitter-email" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Resource</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Seneca Babcock Neighborhood</h3>
+                    <p>Connecting our community with essential resources and services.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/SenecaStreetCDC/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Emergency</h4>
+                    <p><i class="fas fa-phone-alt"></i> Emergency: 911</p>
+                    <p><i class="fas fa-shield-alt"></i> Police: (716) 851-4444</p>
+                    <p><i class="fas fa-fire"></i> Fire: (716) 851-5000</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seneca Babcock Neighborhood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="resources.js"></script>
+</body>
+</html>

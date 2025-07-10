@@ -6,45 +6,156 @@
     <title>Latest News & Updates - Seneca Babcock Neighborhood</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="news.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation (shared with main site) -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">
-                    <i class="fas fa-home"></i>
-                    Seneca Babcock
-                </a>
-            </div>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="events.html" class="nav-link">Events</a>
-                <a href="news.html" class="nav-link active">News</a>
-                <a href="index.html#history" class="nav-link">History</a>
-                <a href="#resources" class="nav-link">Resources</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-search">
-                <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search news, events, places..." aria-label="Search">
-                    <button type="button" id="search-btn" aria-label="Search">
-                        <i class="fas fa-search"></i>
-                    </button>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="assets/logo.jpg" alt="Seneca Babcock Community Logo" class="logo-image">
+                        <div class="logo-text">
+                            <h1>Seneca Babcock</h1>
+                            <span>Community Hub</span>
+                        </div>
+                    </a>
                 </div>
-                <div id="search-results" class="search-results hidden"></div>
+                
+                <div class="nav-main">
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="history.html" class="nav-link">History</a></li>
+                        <li><a href="news.html" class="nav-link active">News</a></li>
+                        <li><a href="events.html" class="nav-link">Events</a></li>
+                        <li><a href="resources.html" class="nav-link">Resources</a></li>
+                        <li><a href="studies.html" class="nav-link">Studies</a></li>
+                        <li><a href="index.html#community" class="nav-link">Community</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="nav-search">
+                        <div class="search-container">
+                            <input type="text" id="search-input" placeholder="Search news, events, places..." aria-label="Search">
+                            <button type="button" id="search-btn" aria-label="Search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div id="search-results" class="search-results hidden"></div>
+                    </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <button class="language-btn" id="language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span>English</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown" id="language-dropdown">
+                            <div class="language-option selected" data-lang="en">
+                                <span class="flag">🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option" data-lang="es">
+                                <span class="flag">🇪🇸</span>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <span class="flag">🇫🇷</span>
+                                <span>Français</span>
+                            </div>
+                            <div class="language-option" data-lang="ar">
+                                <span class="flag">🇸🇦</span>
+                                <span>العربية</span>
+                            </div>
+                            <div class="language-option" data-lang="sw">
+                                <span class="flag">🇹🇿</span>
+                                <span>Kiswahili</span>
+                            </div>
+                            <div class="language-option" data-lang="so">
+                                <span class="flag">🇸🇴</span>
+                                <span>Soomaaliga</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu -->
+                <div class="mobile-menu-container">
+                    <!-- Mobile Language Selector -->
+                    <div class="language-selector mobile">
+                        <button class="language-btn" id="mobile-language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span>English</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown" id="mobile-language-dropdown">
+                            <div class="language-option" data-lang="en">
+                                <span class="flag">🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option" data-lang="es">
+                                <span class="flag">🇪🇸</span>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <span class="flag">🇫🇷</span>
+                                <span>Français</span>
+                            </div>
+                            <div class="language-option" data-lang="ar">
+                                <span class="flag">🇸🇦</span>
+                                <span>العربية</span>
+                            </div>
+                            <div class="language-option" data-lang="sw">
+                                <span class="flag">🇹🇿</span>
+                                <span>Kiswahili</span>
+                            </div>
+                            <div class="language-option" data-lang="so">
+                                <span class="flag">🇸🇴</span>
+                                <span>Soomaaliga</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hamburger Menu -->
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
             </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-nav-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                    <li><a href="history.html" class="mobile-nav-link">History</a></li>
+                    <li><a href="news.html" class="mobile-nav-link active">News</a></li>
+                    <li><a href="events.html" class="mobile-nav-link">Events</a></li>
+                    <li><a href="resources.html" class="mobile-nav-link">Resources</a></li>
+                    <li><a href="studies.html" class="mobile-nav-link">Studies</a></li>
+                    <li><a href="index.html#community" class="mobile-nav-link">Community</a></li>
+                    <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+                </ul>
+                <div class="mobile-search">
+                    <div class="search-container">
+                        <input type="text" id="mobile-search-input" placeholder="Search..." aria-label="Search">
+                        <button type="button" id="mobile-search-btn" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Header -->
-    <header class="news-header">
+    <!-- Page Header -->
+    <section class="news-header">
         <div class="container">
             <h1><i class="fas fa-newspaper"></i> Latest News & Updates</h1>
             <p>Stay informed about what's happening in our community</p>

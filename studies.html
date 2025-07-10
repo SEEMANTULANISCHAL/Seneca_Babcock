@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studies & Research - Seneca Babcock Neighborhood</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="studies.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="assets/logo.jpg" alt="Seneca Babcock Community Logo" class="logo-image">
+                        <div class="logo-text">
+                            <h1>Seneca Babcock</h1>
+                            <span>Community Hub</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="nav-main">
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="history.html" class="nav-link">History</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="events.html" class="nav-link">Events</a></li>
+                        <li><a href="resources.html" class="nav-link">Resources</a></li>
+                        <li><a href="studies.html" class="nav-link active">Studies</a></li>
+                        <li><a href="index.html#community" class="nav-link">Community</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="nav-search">
+                        <div class="search-container">
+                            <input type="text" id="search-input" placeholder="Search news, events, places..." aria-label="Search">
+                            <button type="button" id="search-btn" aria-label="Search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div id="search-results" class="search-results hidden"></div>
+                    </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <button class="language-btn" id="language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span>English</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown" id="language-dropdown">
+                            <div class="language-option selected" data-lang="en">
+                                <span class="flag">🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option" data-lang="es">
+                                <span class="flag">🇪🇸</span>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <span class="flag">🇫🇷</span>
+                                <span>Français</span>
+                            </div>
+                            <div class="language-option" data-lang="ar">
+                                <span class="flag">🇸🇦</span>
+                                <span>العربية</span>
+                            </div>
+                            <div class="language-option" data-lang="sw">
+                                <span class="flag">🇹🇿</span>
+                                <span>Kiswahili</span>
+                            </div>
+                            <div class="language-option" data-lang="so">
+                                <span class="flag">🇸🇴</span>
+                                <span>Soomaaliga</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu -->
+                <div class="mobile-menu-container">
+                    <!-- Mobile Language Selector -->
+                    <div class="language-selector mobile">
+                        <button class="language-btn" id="mobile-language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span>English</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown" id="mobile-language-dropdown">
+                            <div class="language-option" data-lang="en">
+                                <span class="flag">🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                            <div class="language-option" data-lang="es">
+                                <span class="flag">🇪🇸</span>
+                                <span>Español</span>
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <span class="flag">🇫🇷</span>
+                                <span>Français</span>
+                            </div>
+                            <div class="language-option" data-lang="ar">
+                                <span class="flag">🇸🇦</span>
+                                <span>العربية</span>
+                            </div>
+                            <div class="language-option" data-lang="sw">
+                                <span class="flag">🇹🇿</span>
+                                <span>Kiswahili</span>
+                            </div>
+                            <div class="language-option" data-lang="so">
+                                <span class="flag">🇸🇴</span>
+                                <span>Soomaaliga</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+                
+                <!-- Mobile Navigation Menu -->
+                <div class="mobile-nav-menu" id="mobile-nav-menu">
+                    <ul>
+                        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                        <li><a href="history.html" class="mobile-nav-link">History</a></li>
+                        <li><a href="news.html" class="mobile-nav-link">News</a></li>
+                        <li><a href="events.html" class="mobile-nav-link">Events</a></li>
+                        <li><a href="resources.html" class="mobile-nav-link">Resources</a></li>
+                        <li><a href="studies.html" class="mobile-nav-link active">Studies</a></li>
+                        <li><a href="index.html#community" class="mobile-nav-link">Community</a></li>
+                        <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Header -->
+    <header class="studies-header">
+        <div class="container">
+            <h1><i class="fas fa-graduation-cap"></i> Studies & Research</h1>
+            <p>Academic research, policy reports, and data studies about the Seneca Babcock neighborhood</p>
+        </div>
+    </header>
+
+    <!-- Studies Content -->
+    <main class="studies-main">
+        <div class="container">
+            <!-- Study Categories -->
+            <section class="study-categories">
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">All Studies</button>
+                    <button class="tab-btn" data-category="policy">Policy & Planning</button>
+                    <button class="tab-btn" data-category="economic">Economic Development</button>
+                    <button class="tab-btn" data-category="community">Community Development</button>
+                    <button class="tab-btn" data-category="health">Health & Social</button>
+                    <button class="tab-btn" data-category="urban">Urban Studies</button>
+                </div>
+
+                <div class="studies-list">
+                    <!-- Economic Development Studies -->
+                    <div class="study-card" data-category="economic policy">
+                        <div class="study-header">
+                            <div class="study-type">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Policy Report</span>
+                            </div>
+                            <div class="study-year">2013</div>
+                        </div>
+                        <div class="study-content">
+                            <h3>Initiatives for a Smart Economy</h3>
+                            <p class="study-authors">Partnership for the Public Good</p>
+                            <p class="study-description">
+                                Comprehensive economic development strategy for Buffalo, featuring analysis of community assets including 
+                                the Seneca Babcock Community Center as a key neighborhood resource for economic development initiatives.
+                            </p>
+                            <div class="study-highlights">
+                                <h4>Key Findings Related to Seneca Babcock:</h4>
+                                <ul>
+                                    <li>Community centers identified as crucial economic development anchors</li>
+                                    <li>Neighborhood asset mapping for smart economy initiatives</li>
+                                    <li>Local workforce development opportunities analysis</li>
+                                </ul>
+                            </div>
+                            <div class="study-tags">
+                                <span class="tag">Economic Development</span>
+                                <span class="tag">Community Centers</span>
+                                <span class="tag">Asset Mapping</span>
+                                <span class="tag">Workforce Development</span>
+                            </div>
+                            <div class="study-actions">
+                                <a href="https://ppgbuffalo.org/files/documents/economic_development/initiatives_for_a_smart_economy_2013.pdf" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> View Report
+                                </a>
+                                <button class="btn btn-outline study-cite-btn" data-study="smart-economy-2013">
+                                    <i class="fas fa-quote-right"></i> Cite
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Economic Development 2.0 -->
+                    <div class="study-card" data-category="economic policy">
+                        <div class="study-header">
+                            <div class="study-type">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Policy Report</span>
+                            </div>
+                            <div class="study-year">2018</div>
+                        </div>
+                        <div class="study-content">
+                            <h3>Initiatives for a Smart Economy 2.0</h3>
+                            <p class="study-authors">Partnership for the Public Good</p>
+                            <p class="study-description">
+                                Updated economic development framework examining Buffalo's progress and future opportunities, 
+                                with continued focus on community-based economic development including the Seneca Babcock area.
+                            </p>
+                            <div class="study-highlights">
+                                <h4>Updated Analysis:</h4>
+                                <ul>
+                                    <li>Progress assessment of community center economic impact</li>
+                                    <li>Neighborhood economic resilience strategies</li>
+                                    <li>Community-led development initiatives evaluation</li>
+                                    <li>Local business ecosystem analysis</li>
+                                </ul>
+                            </div>
+                            <div class="study-tags">
+                                <span class="tag">Economic Development</span>
+                                <span class="tag">Community Resilience</span>
+                                <span class="tag">Local Business</span>
+                                <span class="tag">Progress Assessment</span>
+                            </div>
+                            <div class="study-actions">
+                                <a href="https://ppgbuffalo.org/files/documents/economic_development/initiatives_for_smart_economy_2_0.pdf" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> View Report
+                                </a>
+                                <button class="btn btn-outline study-cite-btn" data-study="smart-economy-2018">
+                                    <i class="fas fa-quote-right"></i> Cite
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Labor and Community Study -->
+                    <div class="study-card" data-category="community economic">
+                        <div class="study-header">
+                            <div class="study-type">
+                                <i class="fas fa-users"></i>
+                                <span>Research Report</span>
+                            </div>
+                            <div class="study-year">2019</div>
+                        </div>
+                        <div class="study-content">
+                            <h3>Labor Takes the High Road</h3>
+                            <p class="study-authors">Partnership for the Public Good</p>
+                            <p class="study-description">
+                                Examination of labor movements and community solidarity in Buffalo, featuring case studies 
+                                of community organizing including Seneca Babcock residents' involvement in labor solidarity actions.
+                            </p>
+                            <div class="study-highlights">
+                                <h4>Community Organizing Insights:</h4>
+                                <ul>
+                                    <li>Seneca Babcock residents' solidarity demonstrations</li>
+                                    <li>Community-labor partnership models</li>
+                                    <li>Neighborhood organizing capacity analysis</li>
+                                    <li>Cross-community coalition building strategies</li>
+                                </ul>
+                            </div>
+                            <div class="study-tags">
+                                <span class="tag">Labor Studies</span>
+                                <span class="tag">Community Organizing</span>
+                                <span class="tag">Social Solidarity</span>
+                                <span class="tag">Coalition Building</span>
+                            </div>
+                            <div class="study-actions">
+                                <a href="https://ppgbuffalo.org/files/documents/labortakesthehighroad_final_hr.pdf" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> View Report
+                                </a>
+                                <button class="btn btn-outline study-cite-btn" data-study="labor-high-road-2019">
+                                    <i class="fas fa-quote-right"></i> Cite
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gender Equity in Sports Study -->
+                    <div class="study-card" data-category="health community">
+                        <div class="study-header">
+                            <div class="study-type">
+                                <i class="fas fa-female"></i>
+                                <span>Social Research</span>
+                            </div>
+                            <div class="study-year">2022</div>
+                        </div>
+                        <div class="study-content">
+                            <h3>WNY Girls in Sports</h3>
+                            <p class="study-authors">Partnership for the Public Good</p>
+                            <p class="study-description">
+                                Research study examining gender equity in youth sports programs across Western New York, 
+                                including detailed analysis of sports programming at the Seneca Babcock Community Center.
+                            </p>
+                            <div class="study-highlights">
+                                <h4>Local Program Analysis:</h4>
+                                <ul>
+                                    <li>Seneca Babcock Community Center sports programs evaluation</li>
+                                    <li>Gender participation rates in neighborhood athletics</li>
+                                    <li>Community center staffing and resource analysis</li>
+                                    <li>Youth development through sports programming</li>
+                                </ul>
+                            </div>
+                            <div class="study-tags">
+                                <span class="tag">Gender Equity</span>
+                                <span class="tag">Youth Development</span>
+                                <span class="tag">Sports Programming</span>
+                                <span class="tag">Community Centers</span>
+                            </div>
+                            <div class="study-actions">
+                                <a href="https://ppgbuffalo.org/files/documents/equality_civil_rights/4_-girls-in-sports.pdf" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> View Report
+                                </a>
+                                <button class="btn btn-outline study-cite-btn" data-study="girls-sports-2022">
+                                    <i class="fas fa-quote-right"></i> Cite
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tool Libraries and Community Development -->
+                    <div class="study-card" data-category="community urban">
+                        <div class="study-header">
+                            <div class="study-type">
+                                <i class="fas fa-tools"></i>
+                                <span>Policy Study</span>
+                            </div>
+                            <div class="study-year">2021</div>
+                        </div>
+                        <div class="study-content">
+                            <h3>Tool Libraries: Hammering Equity Home</h3>
+                            <p class="study-authors">Partnership for the Public Good</p>
+                            <p class="study-description">
+                                Policy research on community tool libraries as equity-building institutions, examining 
+                                community partnerships including collaborations with the Seneca-Babcock Community Association.
+                            </p>
+                            <div class="study-highlights">
+                                <h4>Community Development Findings:</h4>
+                                <ul>
+                                    <li>Community tool sharing network development</li>
+                                    <li>Neighborhood self-sufficiency building strategies</li>
+                                    <li>Community association partnership models</li>
+                                    <li>Equity through resource sharing initiatives</li>
+                                </ul>
+                            </div>
+                            <div class="study-tags">
+                                <span class="tag">Community Development</span>
+                                <span class="tag">Resource Sharing</span>
+                                <span class="tag">Equity Building</span>
+                                <span class="tag">Self-Sufficiency</span>
+                            </div>
+                            <div class="study-actions">
+                                <a href="https://ppgbuffalo.org/files/documents/housing_neighborhoods/tool_library_-_edits_feb2021.pdf" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> View Report
+                                </a>
+                                <button class="btn btn-outline study-cite-btn" data-study="tool-libraries-2021">
+                                    <i class="fas fa-quote-right"></i> Cite
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buffalo Common Council Policy Analysis -->
+                    <div class="study-card" data-category="policy">
+                        <div class="study-header">
+                            <div class="study-type">
+                                <i class="fas fa-gavel"></i>
+                                <span>Policy Analysis</span>
+                            </div>
+                            <div class="study-year">2024</div>
+                        </div>
+                        <div class="study-content">
+                            <h3>Buffalo Common Council Summary: Community Center Transparency</h3>
+                            <p class="study-authors">Partnership for the Public Good</p>
+                            <p class="study-description">
+                                Analysis of Buffalo Common Council proceedings regarding community center funding and transparency, 
+                                featuring discussions about Seneca-Babcock community center operations and municipal oversight.
+                            </p>
+                            <div class="study-highlights">
+                                <h4>Policy Implications:</h4>
+                                <ul>
+                                    <li>Municipal funding transparency for community centers</li>
+                                    <li>Community center oversight and accountability measures</li>
+                                    <li>Neighborhood representation in city council decisions</li>
+                                    <li>Public transparency in community development funding</li>
+                                </ul>
+                            </div>
+                            <div class="study-tags">
+                                <span class="tag">Municipal Policy</span>
+                                <span class="tag">Community Centers</span>
+                                <span class="tag">Transparency</span>
+                                <span class="tag">Accountability</span>
+                            </div>
+                            <div class="study-actions">
+                                <a href="https://ppgbuffalo.org/news-and-events/news/article:10-11-2024-12-00am-buffalo-common-council-summary-week-of-october-7-2024/" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> View Analysis
+                                </a>
+                                <button class="btn btn-outline study-cite-btn" data-study="council-transparency-2024">
+                                    <i class="fas fa-quote-right"></i> Cite
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Research Opportunities -->
+                    <div class="study-card upcoming" data-category="community urban">
+                        <div class="study-header">
+                            <div class="study-type">
+                                <i class="fas fa-university"></i>
+                                <span>Research Opportunity</span>
+                            </div>
+                            <div class="study-year">Ongoing</div>
+                        </div>
+                        <div class="study-content">
+                            <h3>Neighborhood Resilience & Community Assets Study</h3>
+                            <p class="study-authors">University at Buffalo Urban Planning Program</p>
+                            <p class="study-description">
+                                Ongoing graduate research examining community resilience strategies in Buffalo neighborhoods, 
+                                with Seneca Babcock identified as a case study location for community-based asset mapping and development.
+                            </p>
+                            <div class="study-highlights">
+                                <h4>Research Focus Areas:</h4>
+                                <ul>
+                                    <li>Community asset mapping and inventory</li>
+                                    <li>Social capital and neighborhood networks</li>
+                                    <li>Resilience planning and disaster preparedness</li>
+                                    <li>Community-led development initiatives</li>
+                                </ul>
+                            </div>
+                            <div class="study-tags">
+                                <span class="tag">Urban Planning</span>
+                                <span class="tag">Community Resilience</span>
+                                <span class="tag">Asset Mapping</span>
+                                <span class="tag">Graduate Research</span>
+                            </div>
+                            <div class="study-actions">
+                                <button class="btn btn-primary disabled">
+                                    <i class="fas fa-clock"></i> Research in Progress
+                                </button>
+                                <a href="mailto:planning@buffalo.edu" class="btn btn-outline">
+                                    <i class="fas fa-envelope"></i> Contact Researchers
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research Database -->
+            <section class="research-database">
+                <h2><i class="fas fa-database"></i> Research Resources</h2>
+                <div class="database-grid">
+                    <div class="database-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Census Data</h3>
+                        <p>Demographic and economic data for the Seneca Babcock census tract</p>
+                        <a href="https://data.census.gov/cedsci/" target="_blank" class="btn btn-outline">Access Data</a>
+                    </div>
+                    <div class="database-card">
+                        <i class="fas fa-building"></i>
+                        <h3>Property Records</h3>
+                        <p>City of Buffalo property assessment and zoning information</p>
+                        <a href="https://www.buffalony.gov/" target="_blank" class="btn btn-outline">City Records</a>
+                    </div>
+                    <div class="database-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Crime Statistics</h3>
+                        <p>Buffalo Police Department crime data and statistics by district</p>
+                        <a href="https://data.buffalony.gov/" target="_blank" class="btn btn-outline">Crime Data</a>
+                    </div>
+                    <div class="database-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Academic Archives</h3>
+                        <p>University at Buffalo digital collections and local history</p>
+                        <a href="https://library.buffalo.edu/" target="_blank" class="btn btn-outline">UB Libraries</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit Research -->
+            <section class="submit-research">
+                <div class="submit-research-container">
+                    <h2><i class="fas fa-plus-circle"></i> Submit Research</h2>
+                    <p>Know of academic research or studies about Seneca Babcock? Help us build our research database.</p>
+                    <form class="research-form" id="research-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="research-title">Research Title</label>
+                                <input type="text" id="research-title" name="research-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="research-category">Category</label>
+                                <select id="research-category" name="research-category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="policy">Policy & Planning</option>
+                                    <option value="economic">Economic Development</option>
+                                    <option value="community">Community Development</option>
+                                    <option value="health">Health & Social</option>
+                                    <option value="urban">Urban Studies</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="research-authors">Authors/Institution</label>
+                                <input type="text" id="research-authors" name="research-authors" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="research-year">Publication Year</label>
+                                <input type="number" id="research-year" name="research-year" min="1900" max="2025">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="research-description">Description</label>
+                            <textarea id="research-description" name="research-description" rows="3" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="research-link">Link to Research</label>
+                                <input type="url" id="research-link" name="research-link" placeholder="https://...">
+                            </div>
+                            <div class="form-group">
+                                <label for="submitter-email">Your Email</label>
+                                <input type="email" id="submitter-email" name="submitter-email" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Research</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Citation Modal -->
+    <div id="citation-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-quote-right"></i> Citation Information</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="citation-content"></div>
+                <div class="citation-formats">
+                    <h4>Citation Formats:</h4>
+                    <div class="citation-format">
+                        <strong>APA Style:</strong>
+                        <div class="citation-text" id="apa-citation"></div>
+                        <button class="copy-citation" data-format="apa">Copy</button>
+                    </div>
+                    <div class="citation-format">
+                        <strong>MLA Style:</strong>
+                        <div class="citation-text" id="mla-citation"></div>
+                        <button class="copy-citation" data-format="mla">Copy</button>
+                    </div>
+                    <div class="citation-format">
+                        <strong>Chicago Style:</strong>
+                        <div class="citation-text" id="chicago-citation"></div>
+                        <button class="copy-citation" data-format="chicago">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Seneca Babcock Neighborhood</h3>
+                    <p>Advancing community development through research, policy, and action.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/SenecaStreetCDC/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="studies.html">Studies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Research Partners</h4>
+                    <p><i class="fas fa-university"></i> Partnership for the Public Good</p>
+                    <p><i class="fas fa-graduation-cap"></i> University at Buffalo</p>
+                    <p><i class="fas fa-building"></i> City of Buffalo</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seneca Babcock Neighborhood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="studies.js"></script>
+</body>
+</html>
